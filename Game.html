@@ -8,6 +8,7 @@ canvas {
     background-color: #f1f1f1;
 }
 </style>
+    <marquee scroller="30" scroll=left"> Game designed by Tejas Shinde.</marquee>
 </head>
 <body onload="startGame()">
 <script>
@@ -133,5 +134,10 @@ function accelerate(n) {
 <button onmousedown="accelerate(-0.2)" onmouseup="accelerate(0.05)">ACCELERATE</button>
 <p>Use the ACCELERATE button to stay in the air</p>
 <p>How long can you stay alive?</p>
+    <b>Note:</b><p>If you lose the game, and game didn't restart automatically, Please refresh the page.</p>
+<style>
+marquee {
+ background-color:red;}
+                                                                   </style>
 </body>
 </html>
