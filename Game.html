@@ -140,10 +140,10 @@ function clearmove() {   // start from 0
 }
 </script>
 <div style="text-align:center;width:480px;">
-  <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">&#8593</button><br><br>
-  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">&#8592</button>
-  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">&#8594</button><br><br>
-  <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">&#8595</button>
+  <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()" class="center-top">&#9650;</button><br><br>
+  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()" class="center-left">&#129152;</button>
+  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()"class=center-right>&#129146;</button><br><br>
+  <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()"class=center-bottom>&#9660;</button>
 </div>
 <style>
     body{
@@ -173,7 +173,38 @@ function clearmove() {   // start from 0
 
         background-color: white;
     }
-
+.center-top{
+        top: 1000%;
+        left: 0%;
+        transform: translateY(50%);
+        transform: translateX(50%);
+        background-color: greenyellow;
+        cursor: pointer;
+    }
+    .center-left{
+        top: 1000%;
+        left: 0%;
+        transform: translateY(50%);
+        transform: translateX(-20%);
+        background-color: yellow;
+        cursor: pointer;
+    
+    }
+    .center-right{
+        right: 0%;
+        bottom: 45%; 
+        transform: translateY(50%);
+        transform: translateX(106%);
+        background-color: yellow;
+        cursor: pointer;
+    }
+    .center-bottom{
+        top: 1000%;
+        left: 0%;
+        transform: translateY(60%);
+        transform: translateX(50%);
+        background-color: greenyellow;
+        cursor: pointer;}
 </style>
 <hr>
 ||
