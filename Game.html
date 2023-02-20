@@ -2,16 +2,29 @@
 <html>
 <head>
     <marquee scroll="left" scroller speed="30" color="white">Game designed by Tejas Shinde</marquee>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/> </head>
+
+<body oncontextmenu="return false;">
 <style>
+
 canvas {
     border:1px solid: red;
     background-color: #808000;
 }
+button{
+    color: black;
+    padding: 14px 20px;
+    margin: 2px 0;
+    border: auto;
+    cursor: pointer;
+    display: inline-block;
+    border-color: grey;
+}
 </style>
 </head>
-<body onload="startGame()"  oncontextmenu="return false";>
+<body onload="startGame()" >
 <script>
+
 
 var myGamePiece;
 var myObstacles = [];
@@ -173,7 +186,7 @@ function clearmove() {   // start from 0
 
         background-color: white;
     }
-.center-top{
+    .center-top{
         top: 1000%;
         left: 0%;
         transform: translateY(50%);
