@@ -1,163 +1,268 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+    <script type="text/javascript">
+        document.onmousedown = function(e) {
+          if (e.button == 2) {
+            document.write();
+          }
+        };
+        </script>
 <head>
-  <meta charset="UTF-8">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body oncontextmenu="return false">
-  <div class="container">
-    <form id="login-form">
-      <h1>Login</h1>
-      <label for="username">Username</label>
-      <input type="text" id="username" name="username" required>
-      <label for="password">Password</label>
-      <input type="password" id="password" name="password" required>
-      <button type="submit">Login</button>
-      <p id="error-message"></p>
-    </form>
-  </div>
-  <script src="script.js"></script>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/> </head>
 
-  <style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-    background: linear-gradient(180deg, #0c1c3d 0%, #0c1c3d 40%, #102a4e 60%, #1d2c4a 100%);
-  }
-  
-  .container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  #login-form {
-    background-color: #fff;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 30px;
-  }
-  
-  label {
-    display: block;
-    margin-bottom: 10px;
-  }
-  
-  input[type="text"], input[type="password"] {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border-radius: 5px;
-    border: none;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  }
-  
-  button[type="submit"] {
-    width: 100%;
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    background-color: #4caf50;
-    color: #fff;
+<body oncontextmenu="return false;">
+<style>
+body{
+    background-color: black;
+  font-family: cursive;
+
+}
+canvas {
+    border:1px solid: red;
+    background-color: #808000;
+}
+button{
+    color: black;
+    padding: 14px 20px;
+    margin: 2px 0;
+    border: auto;
     cursor: pointer;
+    display: inline-block;
+    border-color: grey;
+}
+.glow {
+    font-size: 80px;
+    color: #fff;
+    text-align: left;
+    animation: glow 1s ease-in-out infinite alternate;
   }
   
-  button[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
-  
-  #error-message {
-    color: red;
-    text-align: center;
-  }
-  body {
-    background: linear-gradient(180deg, #0c1c3d 0%, #0c1c3d 40%, #102a4e 60%, #1d2c4a 100%);
-  }
-  .stars {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    pointer-events: none;
-  }
-  
-  .stars:after {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 3px;
-    height: 3px;
-    border-radius: 50%;
-    background: #fff;
-    box-shadow: 0 0 2px 1px #fff;
-    transform: translate(-50%, -50%);
-    animation: twinkle 2s infinite;
-  }
-  
-  @keyframes twinkle {
-    0% {
-      opacity: 0.8;
+  @-webkit-keyframes glow {
+    from {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
     }
-    50% {
-      opacity: 0.2;
-    }
-    100% {
-      opacity: 0.8;
-    }
-  }
-  
-  .moon {
-    position: fixed;
-    top: 20%;
-    left: 10%;
-    width: 100px;
-    height: 100px;
-    z-index: -1;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .moon {
-      width: 80px;
-      height: 80px;
-      top: 10%;
-      left: 5%;
+    
+    to {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
     }
   }
 </style>
+</head>
+<body onload="startGame()" >
+   
 <script>
-  const form = document.getElementById('login-form');
-  const errorMessage = document.getElementById('error-message');
-  
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const username = form.username.value;
-    const password = form.password.value;
-  
-    // TODO: Implement server-side authentication
-    if (username === 'admin' && password === 'admin') {
-   window.location.href = 'file:///C:/Program%20Files/Notepad%2B%2B/redirect_to_login_page.html';
+
+
+var myGamePiece;
+var myObstacles = [];
+var myScore;
+
+function startGame() {
+    myGamePiece = new component(30, 30, "blue", 30, 150);
+    myScore = new component("30px", "Consolas", "black", 100, 40, "text");
+    myGameArea.start();
+}
+
+var myGameArea = {
+    canvas : document.createElement("canvas"),
+    start : function() {
+        this.canvas.width = 270;
+        this.canvas.height = 270;
+        this.context = this.canvas.getContext("2d");
+        document.body.insertBefore(this.canvas, document.body.childNodes[0]);
+        this.frameNo = 0;
+        this.interval = setInterval(updateGameArea, 20);
+        },
+    clear : function() {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    },
+    stop : function() {
+        clearInterval(this.interval);
     }
-    if (username === 'tejas' && password === 'tejas123') {
-      window.location.href = 'file:///C:/Program%20Files/Notepad%2B%2B/ban%20check.html';
+}
+
+function component(width, height, color, x, y, type) {
+    this.type = type;
+    this.width = width;
+    this.height = height;
+    this.speedX =0.1;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y;    
+    this.update = function() {
+        ctx = myGameArea.context;
+        if (this.type == "text") {
+            ctx.font = this.width + " " + this.height;
+            ctx.fillStyle = color;
+            ctx.fillText(this.text, this.x, this.y);
+        } else {
+            ctx.fillStyle = color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
     }
-    else {
-      errorMessage.textContent = 'Invalid username or password';
+    this.newPos = function() {
+        this.x += this.speedX;
+        this.y += this.speedY;        
     }
-  });
-  </script>
-  </body>
-</body>
+    this.crashWith = function(otherobj) {
+        var myleft = this.x;
+        var myright = this.x + (this.width);
+        var mytop = this.y;
+        var mybottom = this.y + (this.height);
+        var otherleft = otherobj.x;
+        var otherright = otherobj.x + (otherobj.width);
+        var othertop = otherobj.y;
+        var otherbottom = otherobj.y + (otherobj.height);
+        var crash = true;
+        if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+            crash = false;
+        }
+        return crash;
+    }
+}
+
+function updateGameArea() {
+    var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+    for (i = 0; i < myObstacles.length; i += 1) {
+        if (myGamePiece.crashWith(myObstacles[i])) {
+            myGameArea.stop();
+            return;
+        } 
+    }
+    myGameArea.clear();
+    myGameArea.frameNo += 1;
+    if (myGameArea.frameNo == 1 || everyinterval(150)) {
+        x = myGameArea.canvas.width;
+        minHeight = 20;
+        maxHeight = 200;
+        height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+        minGap = 50;
+        maxGap = 200;
+        gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+        myObstacles.push(new component(10, height, "#FF671F", x, 0));  //top object color
+        myObstacles.push(new component(10, x - height - gap, "#046A38", x, height + gap)); // bottom object color
+    }
+    for (i = 0; i < myObstacles.length; i += 1) {
+        myObstacles[i].speedX = -1;
+        myObstacles[i].newPos();
+        myObstacles[i].update();
+    }
+    myScore.text="SCORE: " + myGameArea.frameNo;
+    myScore.update();
+    myGamePiece.newPos();    
+    myGamePiece.update();
+}
+
+function everyinterval(n) {
+    if ((myGameArea.frameNo / n) % 1 == 0) {return true;}
+    return false;
+}
+
+function moveup() {   // This will move up the object
+    myGamePiece.speedY = -1; 
+}
+
+function movedown() {  // This will move down the object
+    myGamePiece.speedY = 1; 
+}
+
+function moveleft() {  // This will move left the object
+    myGamePiece.speedX = -1; 
+}
+
+function moveright() {  // This will move right the object
+    myGamePiece.speedX = 1; 
+}
+
+function clearmove() {   // start from 0
+    myGamePiece.speedX = 0; 
+    myGamePiece.speedY = 0; 
+}
+</script>
+<hr>
+<p bgcolor="white" text="white">Controls</p>
+<div style="text-align:center;width:480px;">
+  <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()" class="center-top">&#9650;</button><br><br></tr>
+  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()" class="center-left">&#8592;</button>
+  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()"class=center-right>&#8594;</button><br><br>
+  <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()"class=center-bottom>&#9660;</button>
+</div>
+</table>
+<style>
+    p{background-color: whitesmoke;}
+    body{
+        background-color: black;
+        padding: 10%;
+        border-color: aqua;
+        border-width: 20;
+        border-top: red;
+        border-right: red;
+        border-style: double;
+    }
+
+   canvas {
+    border-color: aqua;
+    border-width: 20;
+    border-top: red;
+    border-right: red;
+    border-style: double;
+
+    }
+    button {
+        align:center;
+    }
+    marquee{
+        background-color:red;
+        color: white;
+    }
+    button {
+
+        background-color: white;
+    }
+    .center-top{
+        top: 1000%;
+        left: 0%;
+        transform: translateY(50%);
+        transform: translateX(-190%);
+        background-color: greenyellow;
+        cursor: pointer;
+        border-color: cyan;
+    }
+    .center-left{
+        top: 1000%;
+        left: 0%;
+        transform: translateY(50%);
+        transform: translateX(-250%);
+        background-color: yellow;
+        cursor: pointer;
+    
+    }
+    .center-right{
+        right: 0%;
+        bottom: 45%; 
+        transform: translateY(50%);
+        transform: translateX(-130%);
+        background-color: yellow;
+        cursor: pointer;
+    }
+    .center-bottom{
+        top: 1000%;
+        left: 0%;
+        transform: translateY(60%);
+        transform: translateX(-190%);
+        background-color: greenyellow;
+        cursor: pointer;}
+    
+</style>
+<hr>
+||
+<button onClick="window.location.reload();">Restart</button>
+||
+<button onclick="window.location.href='https://i.pinimg.com/originals/16/f1/1e/16f11eddb3ea2859c4c2524af6a782ac.jpg';">End the game</button>
+||
+<hr>
+<h1 class="glow">Good luck!</h1>
+
 </body>
 </html>
