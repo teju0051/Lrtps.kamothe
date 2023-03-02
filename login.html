@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Login Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body oncontextmenu="return false">
+  <div class="container">
+    <form id="login-form">
+      <h1>Login</h1>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Login</button>
+      <p id="error-message"></p>
+    </form>
+  </div>
+  <script src="script.js"></script>
+
+  <style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(180deg, #0c1c3d 0%, #0c1c3d 40%, #102a4e 60%, #1d2c4a 100%);
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  #login-form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+    cursor: pointer;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  #error-message {
+    color: red;
+    text-align: center;
+  }
+  body {
+    background: linear-gradient(180deg, #0c1c3d 0%, #0c1c3d 40%, #102a4e 60%, #1d2c4a 100%);
+  }
+  .stars {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    pointer-events: none;
+  }
+  
+  .stars:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 2px 1px #fff;
+    transform: translate(-50%, -50%);
+    animation: twinkle 2s infinite;
+  }
+  
+  @keyframes twinkle {
+    0% {
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 0.2;
+    }
+    100% {
+      opacity: 0.8;
+    }
+  }
+  
+  .moon {
+    position: fixed;
+    top: 20%;
+    left: 10%;
+    width: 100px;
+    height: 100px;
+    z-index: -1;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .moon {
+      width: 80px;
+      height: 80px;
+      top: 10%;
+      left: 5%;
+    }
+  }
+</style>
+<script>
+  const form = document.getElementById('login-form');
+  const errorMessage = document.getElementById('error-message');
+  
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const username = form.username.value;
+    const password = form.password.value;
+  
+    // TODO: Implement server-side authentication
+    if (username === 'admin' && password === 'admin') {
+   window.location.href = 'file:///C:/Program%20Files/Notepad%2B%2B/redirect_to_login_page.html';
+    }
+    if (username === 'tejas' && password === 'tejas123') {
+      window.location.href = 'https://teju0051.github.io/Lrtps.kamothe/banned.html';
+    }
+    else {
+      errorMessage.textContent = 'Invalid username or password';
+    }
+  });
+  </script>
+  </body>
+</body>
+</body>
+</html>
