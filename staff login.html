@@ -1,62 +1,148 @@
-<html lang ="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>LRTems Staffs Login</title>
-<link rel="icon" type="image/png" href="https://i0.wp.com/www.lrtems.com/wp-content/uploads/2020/07/logo.png?fit=140%2C140&ssl=1"/>
-<!--
-<marquee scrool="left" scroll-speed="30"> Server are under maintainance.
-</marquee> 
--->
-<marquee scrool="left" scroll-speed="30"> Designed by Tejas.
-</marquee> 
+	<link rel="icon" href="file:///C:/Users/ADMIN/Downloads/watermark_preview_image20230304-21487-1h96rcb-removebg-preview.png">
+  <meta charset="UTF-8">
+  <title>Staff Login Page</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <!--
 <script type="text/Javascript">
-  window.alert("Server are under maintainance")
-  </script> 
+window.alert("Servers are under maintainance, Login has been disabled")
+</script> 
 -->
-<body bgcolor="orange">
-<hr>
-||
-<button onclick="myFunction()"> Dark/Light mode</button>
-||
-<button onclick="window.location.href='file:///C:/Program%20Files/Notepad++/new1.html';">Back</button>
-||
-<hr>
-<center>
-<h1> Staff login </h1>
-<input type="text" placeholder="Username"required> <br>
-<input type="password" placeholder="Password"required> <br>
-<button class="submit"disabled>Submit</button>
+<body oncontextmenu="return false">
 
+  <div class="container">
+    <form id="login-form" method="post" aria-required="true">
+      <h1>Staff Login</h1>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" required>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password" required>
+      <button type="submit">Login</button>
+      <p id="error-message"></p>
+    </form>
 
-</center>
+  </div>
+  
 
-<style>
-body {
-  padding: 25px;
-  color: black;
-  font-size: 25px;
+  <script src="script.js"></script>
+  <style>
+button {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
+label{
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+    img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10%;
+    }
+    
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: purple;
+  }
+  
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  #login-form {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: none;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #4caf50;
+    color: #fff;
+  
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  #error-message {
+    color: red;
+    text-align: center;
 
-.dark-mode {
-  background-color: black;
-  color: white;
-}
-button{
-   border-color: black;
-   border-width: 3px;
-   border-height: 3px;
-   cursor: pointer;
-}
-marquee {background-color: red;}
+  }
+
+  marquee{
+    background-color: red;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+  }
 
 </style>
-
 <script>
-function myFunction() {
-   var element = document.body;
-   element.classList.toggle("dark-mode");
-}
+const form = document.getElementById('login-form');
+const errorMessage = document.getElementById('error-message');
+
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const username = form.username.value;
+  const password = form.password.value;
+
+  // TODO: Implement server-side authentication
+  if (username === 'admin' && password === 'admin') {
+    window.location.href = 'https://teju0051.github.io/Lrtps.kamothe/Game.html';
+  }
+  if (username === 'tejas' && password === 'tejas123') {
+    window.location.href = 'https://teju0051.github.io/Lrtps.kamothe/Game.html';
+  }
+  if (username === 'abhijeet' && password === 'abhijeet091234') {
+    window.location.href = 'https://teju0051.github.io/Lrtps.kamothe/Game.html';
+     }
+  if (username === 'pravartak' && password === 'pravartak023431') {
+    window.location.href = 'https://teju0051.github.io/Lrtps.kamothe/Game.html';
+       }   
+  if (username === 'himali' && password === 'himali563457') {
+    window.location.href = 'https://teju0051.github.io/Lrtps.kamothe/Game.html';
+           }   
+  if (username === 'rohit' && password === 'rohit714743') {
+    window.location.href = 'file:///C:/Program%20Files/Notepad%2B%2B/ban%20check.html';
+                   }          
+  else {
+    errorMessage.textContent = 'Invalid username or password';
+  }
+});
 </script>
+
 </body>
 </html>
